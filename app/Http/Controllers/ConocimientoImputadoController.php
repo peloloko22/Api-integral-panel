@@ -60,7 +60,7 @@ class ConocimientoImputadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ConocimientoImputado $conocimiento_imputado)
+    public function update(RequestsConocimientoImputado $request, ConocimientoImputado $conocimiento_imputado)
     {
         $conocimiento_imputado->update($request->validated());
         return response()->json($conocimiento_imputado);

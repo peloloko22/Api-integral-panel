@@ -118,8 +118,10 @@ Route::post('reenviar-alerta/{alerta}', [AlertaController::class, 'reenviarAlert
 Route::apiResource('roles', RolController::class);
 Route::apiResource('alerta-jerarquias', AlertaJerarquiaController::class);
 Route::get('alertas-por-jerarquias', [AlertaJerarquiaController::class, 'indexJerarquiaAlertas']);
-Route::put('configurar-parte', [ConfiguracionParteController::class, 'update']);
+Route::post('configurar-parte', [ConfiguracionParteController::class, 'store']);
+Route::put('configurar-parte/{id}', [ConfiguracionParteController::class, 'update']);
 Route::get('configurar-parte', [ConfiguracionParteController::class, 'index']);
+Route::delete('configurar-parte/{id}', [ConfiguracionParteController::class, 'destroy']);
 Route::apiResource('departamental', DepartamentalController::class);
 Route::apiResource('formulario-ayuda', FormularioAyudaController::class);
 Route::get('parte', [ParteController::class, 'index']);
@@ -294,7 +296,7 @@ Route::apiResource('tipo-moneda', TipoMonedaController::class)->parameters(['tip
 
 Route::apiResource('tipo-suicidio', TipoSuicidioController::class)->parameters(['tipo-suicidio' => 'tipo_suicidio'])->only(['index', 'store', 'destroy'])->parameters(['tipo-suicidio' => 'tipo_suicidio']);
 
-Route::apiResource('consecuencia-hecho', ConsecuenciaHechoController::class)->parameters(['consecuencia-hecho' => 'consecuencia_hecho'])->only(['index', 'store', 'destroy'])->parameters(['consecuencia-hecho' => 'consecuencia_hecho']);
+Route::apiResource('consecuencia-hecho', ConsecuenciaHechoController::class)->parameters(['consecuencia-hecho' => 'consecuencia_hecho'])->only(['index', 'store','update', 'destroy'])->parameters(['consecuencia-hecho' => 'consecuencia_hecho']);
 
 Route::apiResource('capacidad-persona', CapacidadPersonaController::class)->parameters(['capacidad-persona' => 'capacidad_persona'])->only(['index', 'store', 'update', 'destroy'])->parameters(['capacidad-persona' => 'capacidad_persona']);
 

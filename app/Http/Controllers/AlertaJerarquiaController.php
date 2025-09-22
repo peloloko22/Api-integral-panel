@@ -53,10 +53,9 @@ class AlertaJerarquiaController extends Controller
         return response()->json($tipos);
     }
 
-    public function show($id)
+    public function show(AlertaJerarquia $alerta_jerarquia)
     {
-        $alertaJerarquia = AlertaJerarquia::findOrFail($id);
-        return response()->json($alertaJerarquia);
+        return response()->json($alerta_jerarquia);
     }
 
     public function store(AlertaJerarquiaStoreRequest $request)
@@ -68,15 +67,14 @@ class AlertaJerarquiaController extends Controller
         return response()->json($alertaJerarquia, 201);
     }
 
-    /* public function update(AlertaJerarquiaStoreRequest $request, $id)
+     public function update(AlertaJerarquiaStoreRequest $request, AlertaJerarquia $alerta_jerarquia)
     {
-        $alertaJerarquia = AlertaJerarquia::findOrFail($id);
         $data = $request->validated();
 
-        $alertaJerarquia->update($data);
+        $alerta_jerarquia->update($data);
 
-        return response()->json($alertaJerarquia, 200);
-    } */
+        return response()->json($alerta_jerarquia, 200);
+    } 
 
     public function massUpdate(AlertaJerarquiaUpdateRequest $request)
     {
@@ -110,10 +108,9 @@ class AlertaJerarquiaController extends Controller
 
 
 
-    public function destroy($id)
+    public function destroy(AlertaJerarquia $alerta_jerarquia)
     {
-        $alertaJerarquia = AlertaJerarquia::findOrFail($id);
-        $alertaJerarquia->delete();
+        $alerta_jerarquia->delete();
 
         return response()->json(null, 204);
     }
